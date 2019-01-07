@@ -1,7 +1,7 @@
 import random
+import time
 
-from actors import Wizard, Creature, Description, Location, ConcatText
-
+from actors import Wizard, Creature
 
 def main():
     print_header()
@@ -84,7 +84,12 @@ def game_loop():
         ))
         cmd = input('Do you attack, runaway, or look around?')
         if cmd == 'a':
-            print('attack')
+            if hero.attack(active_creature):
+                creatures.remove(active_creature)
+            else:
+                print("The wizard runs and hides to recover strength.")
+                time.sleep(5)
+                print("The wizard returns revitalized.")
         elif cmd == 'r':
             print('runaway')
         elif cmd == 'l':
