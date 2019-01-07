@@ -24,6 +24,7 @@ class Description:
             self.adjective
         )
 
+
 class Location:
     def __init__(self, noun):
         self.noun = noun
@@ -31,4 +32,14 @@ class Location:
     def __repr__(self):
         return '{}'.format(
             self.noun
+        )
+
+
+class ConcatText:
+    def __init__(self, text):
+        self.text = text
+
+    def __repr__(self):
+        return '{}'.format(
+            self.text
         )
