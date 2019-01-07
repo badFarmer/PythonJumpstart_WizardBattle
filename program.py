@@ -1,8 +1,11 @@
+import random
+
 from actors import Wizard, Creature
 
 
 def main():
     print_header()
+    game_loop()
 
 
 def print_header():
@@ -12,23 +15,22 @@ def print_header():
 
 
 def game_loop():
-
     creatures = [
-        Creature(),
-        Creature(),
-        Creature(),
-        Creature(),
-        Creature()
-
+        Creature('Toad', 1),
+        Creature('Tiger', 12),
+        Creature('Bat', 3),
+        Creature('Dragon', 50),
+        Creature('Evil Wizard', 1000)
     ]
 
-    hero = Wizard()
-
-
-
+    hero = Wizard('Gandolf', 75)
 
     while True:
 
+        active_creature = random.choice(creatures)
+        print('A {} of level {} has appeared from a dark and foggy forest...'.format(
+            active_creature.name,
+            active_creature.level))
         cmd = input('Do you attack, runaway, or look around?')
         if cmd == 'a':
             print('attack')
@@ -41,8 +43,5 @@ def game_loop():
             break
 
 
-
 if __name__ == '__main__':
     main()
-
-
