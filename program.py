@@ -1,6 +1,6 @@
 import random
 
-from actors import Wizard, Creature
+from actors import Wizard, Creature, Description, Location
 
 
 def main():
@@ -15,6 +15,31 @@ def print_header():
 
 
 def game_loop():
+
+    descriptions = [
+        Description('dark'),
+        Description('creepy'),
+        Description('foggy'),
+        Description('burning'),
+        Description('grim'),
+        Description('moaning'),
+        Description('rippling'),
+        Description('hellish'),
+    ]
+
+    locations = [
+        Location('forest'),
+        Location('bog'),
+        Location('marsh'),
+        Location('ravine'),
+        Location('slough'),
+        Location('hallow'),
+        Location('field'),
+        Location('hut'),
+        Location('river'),
+        Location('hovel'),
+    ]
+
     creatures = [
         Creature('Toad', 1),
         Creature('Tiger', 12),
@@ -26,11 +51,17 @@ def game_loop():
     hero = Wizard('Gandolf', 75)
 
     while True:
-
+        active_description1 = random.choice(descriptions)
+        active_description2 = random.choice(descriptions)
+        active_location = random.choice(locations)
         active_creature = random.choice(creatures)
-        print('A {} of level {} has appeared from a dark and foggy forest...'.format(
+        print('A {} of level {} has appeared from a {} and {} {}...'.format(
             active_creature.name,
-            active_creature.level))
+            active_creature.level,
+            active_description1.adjective,
+            active_description2.adjective,
+            active_location.noun
+        ))
         cmd = input('Do you attack, runaway, or look around?')
         if cmd == 'a':
             print('attack')

@@ -23,3 +23,12 @@ class Description:
         return '{}'.format(
             self.adjective
         )
+
+class Location:
+    def __init__(self, noun):
+        self.noun = noun
+
+    def __repr__(self):
+        return '{}'.format(
+            self.noun
+        )
