@@ -13,3 +13,13 @@ class Creature:
         return "Creature {} of level {}".format(
             self.name, self.level
         )
+
+
+class Description:
+    def __init__(self, adjective):
+        self.adjective = adjective
+
+    def __repr__(self):
+        return '{}'.format(
+            self.adjective
+        )
