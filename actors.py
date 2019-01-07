@@ -26,12 +26,14 @@ class Description:
 
 
 class Location:
-    def __init__(self, noun):
-        self.noun = noun
+
+
+    def __init__(self, description):
+        self.description = description
 
     def __repr__(self):
         return '{}'.format(
-            self.noun
+            self.description
         )
 
 

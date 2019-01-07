@@ -14,36 +14,49 @@ def print_header():
     print('------------------------')
 
 
-def game_loop():
+def location_generator():
     descriptions = [
-        Description('dark'),
-        Description('creepy'),
-        Description('foggy'),
-        Description('burning'),
-        Description('grim'),
-        Description('moaning'),
-        Description('rippling'),
-        Description('hellish'),
+        'dark',
+        'creepy',
+        'foggy',
+        'grim',
+        'moaning',
+        'rippling',
+        'hellish',
     ]
 
-    locations = [
-        Location('forest'),
-        Location('bog'),
-        Location('marsh'),
-        Location('ravine'),
-        Location('slough'),
-        Location('hallow'),
-        Location('field'),
-        Location('hut'),
-        Location('river'),
-        Location('hovel'),
+    terrains = [
+        'forest',
+        'bog',
+        'marsh',
+        'ravine',
+        'slough',
+        'hallow',
+        'field',
+        'hut',
+        'river',
+        'hovel',
     ]
 
-    concats = [
-        ConcatText(', '),
-        ConcatText(' and ')
+    adjective1 = random.choice(descriptions)
+    adjective2 = random.choice(descriptions)
+    terrain =  random.choice(terrains)
+
+    descriptions = [
+        " a {} and {} {}.".format(adjective1, adjective2, terrain),
+        " a {}, {} {}".format(adjective1, adjective2, terrain),
+        " a {} {}".format(adjective1, terrain)
     ]
 
+    if adjective1 == adjective2:
+        description = descriptions[3]
+    else:
+        description = random.choice(descriptions)
+
+    return description
+
+
+def game_loop():
     creatures = [
         Creature('Toad', 1),
         Creature('Tiger', 12),
@@ -55,21 +68,12 @@ def game_loop():
     hero = Wizard('Gandolf', 75)
 
     while True:
-        active_description1 = random.choice(descriptions)
-        active_description2 = random.choice(descriptions)
-        active_concat = random.choice(concats)
-        if active_description1.adjective == active_description2.adjective:
-            active_description2.adjective = ''
-            active_concat.text = ''
-        active_location = random.choice(locations)
+        location = location_generator()
         active_creature = random.choice(creatures)
-        print('A {} of level {} has appeared from a {}{}{} {}...'.format(
+        print('A {} of level {} has appeared from{}...'.format(
             active_creature.name,
             active_creature.level,
-            active_description1.adjective,
-            active_concat.text,
-            active_description2.adjective,
-            active_location.noun
+            location
             ))
         cmd = input('Do you attack, runaway, or look around?')
         if cmd == 'a':
