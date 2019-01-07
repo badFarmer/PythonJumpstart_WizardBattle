@@ -15,7 +15,7 @@ def print_header():
 
 
 def location_generator():
-    descriptions = [
+    adjectives = [
         'dark',
         'creepy',
         'foggy',
@@ -23,8 +23,15 @@ def location_generator():
         'moaning',
         'rippling',
         'hellish',
+        'sleepy',
+        'foul',
+        'unclean',
+        'grimy',
+        'stanky',
+        'wretched',
+        'astral',
+        'squeeling'
     ]
-
     terrains = [
         'forest',
         'bog',
@@ -36,12 +43,12 @@ def location_generator():
         'hut',
         'river',
         'hovel',
+        'plane',
+        'portal'
     ]
-
-    adjective1 = random.choice(descriptions)
-    adjective2 = random.choice(descriptions)
-    terrain =  random.choice(terrains)
-
+    adjective1 = random.choice(adjectives)
+    adjective2 = random.choice(adjectives)
+    terrain = random.choice(terrains)
     descriptions = [
         " a {} and {} {}.".format(adjective1, adjective2, terrain),
         " a {}, {} {}".format(adjective1, adjective2, terrain),
@@ -74,10 +81,10 @@ def game_loop():
             active_creature.name,
             active_creature.level,
             location
-            ))
+        ))
         cmd = input('Do you attack, runaway, or look around?')
         if cmd == 'a':
-            print('penis')
+            print('attack')
         elif cmd == 'r':
             print('runaway')
         elif cmd == 'l':
