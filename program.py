@@ -93,7 +93,11 @@ def game_loop():
         elif cmd == 'r':
             print('runaway')
         elif cmd == 'l':
-            print('look around.')
+            print('The wizard {} takes in the surroundings and sees:'.format(hero.name))
+            for c in creatures:
+                print('* A {} of level {}'.format(
+                    c.name, c.level
+                ))
         else:
             print('OK, exiting game... bye!')
             break
